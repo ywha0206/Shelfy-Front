@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'pages/home/main_screen.dart';
+import 'pages/main_screen.dart';
 
 void main() {
-  runApp(ShelfUI());
+  runApp(const ShelfUI());
 }
 
 class ShelfUI extends StatelessWidget {
@@ -14,7 +14,10 @@ class ShelfUI extends StatelessWidget {
     return MaterialApp(
       title: 'shelfy_ui',
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainScreen(),
+      },
     );
   }
 }
