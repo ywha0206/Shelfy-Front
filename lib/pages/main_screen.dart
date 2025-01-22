@@ -68,9 +68,6 @@ class _MainPageState extends State<MainScreen> {
                 });
               },
               showUnselectedLabels: true,
-              backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xFF4D77B2),
-              unselectedItemColor: Colors.grey.withOpacity(0.6),
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
