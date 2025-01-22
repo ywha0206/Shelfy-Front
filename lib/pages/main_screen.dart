@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../components/custom_appbar.dart';
 import 'books/books_page.dart';
 import 'home/home_page.dart';
 import 'memo/memo_page.dart';
@@ -21,24 +22,17 @@ class _MainPageState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          // title 중앙 정렬
-          centerTitle: true,
-          scrolledUnderElevation: 0,
-          leading: Icon(
-            CupertinoIcons.book,
+        backgroundColor: Colors.white,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: IndexedStack(
+            index: _selectedIndex,
+            children: [
+              HomeAppBar(),
+              BooksAppBar(),
+              BooksAppBar(),
+            ],
           ),
-          title: Text(
-            'Shelfy',
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                CupertinoIcons.search,
-              ),
-            ),
-          ],
         ),
         // IndexedStack 을 활용해 여러 화면을 동시에 호출하고 각 페이지의 상태를 기억함 ( 스크롤 위치 등 )
         body: IndexedStack(
