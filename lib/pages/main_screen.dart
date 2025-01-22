@@ -21,26 +21,21 @@ class _MainPageState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           // title 중앙 정렬
           centerTitle: true,
-          backgroundColor: const Color(0xFF4D77B2),
           scrolledUnderElevation: 0,
           leading: Icon(
             CupertinoIcons.book,
-            color: Colors.white,
           ),
           title: Text(
             'Shelfy',
-            style: TextStyle(color: Colors.white),
           ),
           actions: [
             IconButton(
               onPressed: () {},
               icon: Icon(
                 CupertinoIcons.search,
-                color: Colors.white,
               ),
             ),
           ],
@@ -78,9 +73,6 @@ class _MainPageState extends State<MainScreen> {
                 });
               },
               showUnselectedLabels: true,
-              backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xFF4D77B2),
-              unselectedItemColor: Colors.grey.withOpacity(0.6),
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
