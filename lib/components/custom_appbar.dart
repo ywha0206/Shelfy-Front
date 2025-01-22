@@ -52,10 +52,14 @@ AppBar BooksAppBar() {
             width: 40,
           ),
         ),
-        const SizedBox(width: 6),
+        const SizedBox(width: 14),
         Text(
-          '나의 서재',
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          '나의 책장',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontFamily: 'JUA',
+          ),
         )
       ],
     ),

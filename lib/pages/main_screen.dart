@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/custom_appbar.dart';
 import 'books/books_page.dart';
@@ -77,12 +78,17 @@ class _MainPageState extends State<MainScreen> {
                   label: 'Search',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book),
-                  label: 'Books',
+                  icon: Icon(Icons.stacked_bar_chart),
+                  label: 'My Shelf',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.pen),
-                  label: 'Memo',
+                  // 아이콘 크기 때문에 틀어진 라벨 위치를 맞추기 위해 사이즈박스 사용
+                  icon: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: Icon(FontAwesomeIcons.penNib, size: 18),
+                  ),
+                  label: 'Note',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
