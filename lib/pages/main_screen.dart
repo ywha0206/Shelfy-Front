@@ -33,6 +33,15 @@ class _MainPageState extends State<MainScreen> {
               BooksAppBar(),
             ],
           ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                CupertinoIcons.search,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         // IndexedStack 을 활용해 여러 화면을 동시에 호출하고 각 페이지의 상태를 기억함 ( 스크롤 위치 등 )
         body: IndexedStack(
@@ -67,9 +76,6 @@ class _MainPageState extends State<MainScreen> {
                 });
               },
               showUnselectedLabels: true,
-              backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xFF4D77B2),
-              unselectedItemColor: Colors.grey.withOpacity(0.6),
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
