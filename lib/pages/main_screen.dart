@@ -37,7 +37,12 @@ class _MainPageState extends State<MainScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  // IndexedStack 의 2번째(index=1) 페이지인 SearchPage로 전황
+                  _selectedIndex = 1;
+                });
+              },
               icon: Icon(
                 CupertinoIcons.search,
                 color: Colors.white,
