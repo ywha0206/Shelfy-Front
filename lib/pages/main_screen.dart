@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../components/custom_appbar.dart';
 import 'books/books_page.dart';
 import 'home/home_page.dart';
 import 'memo/memo_page.dart';
@@ -22,33 +24,16 @@ class _MainPageState extends State<MainScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          // title 중앙 정렬
-          centerTitle: true,
-          backgroundColor: const Color(0xFF4D77B2),
-          scrolledUnderElevation: 0,
-          leading: Icon(
-            CupertinoIcons.book,
-            color: Colors.white,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: IndexedStack(
+            index: _selectedIndex,
+            children: [
+              HomeAppBar(),
+              BooksAppBar(),
+              BooksAppBar(),
+            ],
           ),
-          title: Text(
-            'Shelfy',
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  // IndexedStack 의 2번째(index=1) 페이지인 SearchPage로 전황
-                  _selectedIndex = 1;
-                });
-              },
-              icon: Icon(
-                CupertinoIcons.search,
-                color: Colors.white,
-              ),
-            ),
-          ],
         ),
         // IndexedStack 을 활용해 여러 화면을 동시에 호출하고 각 페이지의 상태를 기억함 ( 스크롤 위치 등 )
         body: IndexedStack(
@@ -83,9 +68,6 @@ class _MainPageState extends State<MainScreen> {
                 });
               },
               showUnselectedLabels: true,
-              backgroundColor: Colors.white,
-              selectedItemColor: const Color(0xFF4D77B2),
-              unselectedItemColor: Colors.grey.withOpacity(0.6),
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
@@ -96,12 +78,17 @@ class _MainPageState extends State<MainScreen> {
                   label: 'Search',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book),
-                  label: 'Books',
+                  icon: Icon(Icons.stacked_bar_chart),
+                  label: 'My Shelf',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.pen),
-                  label: 'Memo',
+                  // 아이콘 크기 때문에 틀어진 라벨 위치를 맞추기 위해 사이즈박스 사용
+                  icon: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: Icon(FontAwesomeIcons.penNib, size: 18),
+                  ),
+                  label: 'Note',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),

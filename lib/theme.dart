@@ -23,22 +23,23 @@ TextTheme textTheme() {
 AppBarTheme appBarTheme() {
   return AppBarTheme(
     centerTitle: false,
-    color: Colors.white,
+    color: const Color(0xFF4D77B2), // AppBar 배경색
     elevation: 0.0,
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.white),
     titleTextStyle: GoogleFonts.openSans(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.black // 앱바 제목 텍스트 색상
-        ),
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
   );
 }
 
 // 바텀네비게이션바 테마 설정
 BottomNavigationBarThemeData bottomNavigationBarTheme() {
   return BottomNavigationBarThemeData(
-    selectedItemColor: Colors.orange, // 선택된 아이템 색상
-    unselectedItemColor: Colors.black54, // 선택되지 않은 아이템 색상
+    backgroundColor: Colors.white, // BottomNavigationBar 배경색
+    selectedItemColor: const Color(0xFF4D77B2), // 선택된 아이템 색상
+    unselectedItemColor: Colors.grey.withOpacity(0.6), // 선택되지 않은 아이템 색상
     showUnselectedLabels: true, // 선택 안된 라벨 표시 여부 설정
   );
 }
@@ -51,7 +52,10 @@ ThemeData mTheme() {
     // colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange)
     // 우리가 직접 지정 함
     colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.orange,
+      primarySwatch: Colors.blue,
+    ).copyWith(
+      primary: const Color(0xFF4D77B2), // 주요 색상
+      secondary: const Color(0xFF5B6A95), // 보조 색상
     ),
     scaffoldBackgroundColor: Colors.white,
     textTheme: textTheme(),
