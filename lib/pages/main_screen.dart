@@ -29,7 +29,7 @@ class _MainPageState extends State<MainScreen> {
             index: _selectedIndex,
             children: [
               HomeAppBar(),
-              BooksAppBar(),
+              SearchAppBar(),
               BooksAppBar(),
             ],
           ),
