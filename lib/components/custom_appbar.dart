@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shelfy_team_project/theme.dart';
 
 AppBar HomeAppBar(VoidCallback onSearchPressed) {
   return AppBar(
@@ -90,15 +91,8 @@ AppBar BooksAppBar() {
             width: 40,
           ),
         ),
-        const SizedBox(width: 14),
-        Text(
-          '나의 책장',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-            fontFamily: 'JUA',
-          ),
-        )
+        const SizedBox(width: 10),
+        Text('나의 책장', style: textTheme().displayLarge)
       ],
     ),
     actions: [
@@ -109,6 +103,77 @@ AppBar BooksAppBar() {
           color: Colors.white,
         ),
       ),
+    ],
+  );
+}
+
+AppBar NoteAppBar(BuildContext context) {
+  return AppBar(
+    // 타이틀 위치
+    titleSpacing: 8,
+    // backgroundColor: const Color(0xFF4D77B2),
+    scrolledUnderElevation: 0,
+    title: Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 6.0, top: 6.0, bottom: 6.0),
+          child: Image.asset(
+            'assets/images/shelfy_kitty_logo.png',
+            width: 40,
+          ),
+        ),
+        const SizedBox(width: 6),
+        Text(
+          '나의 기록',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        )
+      ],
+    ),
+    actions: [
+      IconButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/test");
+        },
+        icon: Icon(
+          CupertinoIcons.square_pencil,
+          color: Colors.white,
+        ),
+      ),
+    ],
+  );
+}
+
+AppBar WriteAppBar(BuildContext context) {
+  return AppBar(
+    // 타이틀 위치
+    titleSpacing: 8,
+    // backgroundColor: const Color(0xFF4D77B2),
+    scrolledUnderElevation: 0,
+    title: Center(
+      child: Text(
+        '글쓰기',
+        style: TextStyle(fontSize: 20),
+      ),
+    ),
+    actions: [
+      TextButton(
+          onPressed: () {},
+          child: Text(
+            '완료',
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge
+                ?.copyWith(color: Colors.white),
+          )),
+      // IconButton(
+      //   onPressed: () {
+      //     Navigator.of(context).pushNamed("/test");
+      //   },
+      //   icon: Icon(
+      //     CupertinoIcons.square_pencil,
+      //     color: Colors.white,
+      //   ),
+      // ),
     ],
   );
 }
