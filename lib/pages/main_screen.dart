@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/custom_appbar.dart';
 import 'books/books_page.dart';
 import 'home/home_page.dart';
-import 'note/note_page.dart';
 import 'my/my_page.dart';
+import 'note/note_page.dart';
 import 'search/search_page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -37,6 +37,7 @@ class _MainPageState extends State<MainScreen> {
               SearchAppBar(),
               BooksAppBar(),
               NoteAppBar(context),
+              MyAppbar(context),
             ],
           ),
         ),
