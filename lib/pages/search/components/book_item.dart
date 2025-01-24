@@ -41,7 +41,7 @@ class _BookItemState extends State<BookItem> {
                     heightFactor: 0.97,
                     child: Image.network(
                       height: 105,
-                      book.book_image,
+                      widget.book.book_image,
                     ),
                   ),
                 ),
@@ -54,19 +54,19 @@ class _BookItemState extends State<BookItem> {
                 children: [
                   SizedBox(height: 3),
                   Text(
-                    book.book_title,
+                    widget.book.book_title,
                     style: textTheme().titleLarge,
                   ),
                   SizedBox(height: 5),
                   Row(
                     children: [
                       Text(
-                        '${book.book_author}',
+                        '${widget.book.book_author}',
                         style: textTheme().labelMedium,
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        ' ${book.book_published_at}',
+                        ' ${widget.book.book_published_at}',
                         style: textTheme().labelMedium,
                       ),
                     ],
@@ -74,7 +74,7 @@ class _BookItemState extends State<BookItem> {
                   SizedBox(height: 3),
                   Text(
                     softWrap: true,
-                    '${book.book_desc}',
+                    '${widget.book.book_desc}',
                     style: textTheme().labelSmall,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

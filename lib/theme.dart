@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // 텍스트 테마
 TextTheme textTheme() {
@@ -43,7 +42,8 @@ TextTheme textTheme() {
 AppBarTheme appBarTheme() {
   return AppBarTheme(
     centerTitle: false,
-    color: const Color(0xFF4D77B2), // AppBar 배경색
+    color: const Color(0xFF4D77B2),
+    // AppBar 배경색
     elevation: 0.0,
     iconTheme: IconThemeData(color: Colors.white),
     titleTextStyle: TextStyle(
