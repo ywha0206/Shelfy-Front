@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelfy_team_project/theme.dart';
 
-AppBar HomeAppBar() {
+AppBar HomeAppBar(VoidCallback onSearchPressed) {
   return AppBar(
     // 타이틀 위치
     titleSpacing: 8,
@@ -28,7 +28,7 @@ AppBar HomeAppBar() {
     ),
     actions: [
       IconButton(
-        onPressed: () {},
+        onPressed: onSearchPressed,
         icon: Icon(
           CupertinoIcons.search,
           color: Colors.white,
@@ -56,7 +56,11 @@ AppBar SearchAppBar() {
         const SizedBox(width: 6),
         Text(
           '책 검색',
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontFamily: 'JUA',
+          ),
         )
       ],
     ),

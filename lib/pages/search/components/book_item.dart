@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../models/book.dart';
 import '../../../theme.dart';
 
-class BookItem extends StatelessWidget {
+class BookItem extends StatefulWidget {
   final Book book;
 
   const BookItem({required this.book, super.key});
 
+  @override
+  State<BookItem> createState() => _BookItemState();
+}
+
+class _BookItemState extends State<BookItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
