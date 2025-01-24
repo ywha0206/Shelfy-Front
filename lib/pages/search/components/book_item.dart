@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../../models/book.dart';
 
-class BookItem extends StatelessWidget {
+class BookItem extends StatefulWidget {
   final Book book;
 
   const BookItem({required this.book, super.key});
 
+  @override
+  State<BookItem> createState() => _BookItemState();
+}
+
+class _BookItemState extends State<BookItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +26,7 @@ class BookItem extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Image.network(
                   height: 120,
-                  book.book_image,
+                  widget.book.book_image,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -35,7 +40,7 @@ class BookItem extends StatelessWidget {
                   children: [
                     SizedBox(height: 10),
                     Text(
-                      book.book_title,
+                      widget.book.book_title,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
@@ -43,13 +48,13 @@ class BookItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '${book.book_author}',
+                          '${widget.book.book_author}',
                           style: TextStyle(
                               color: Colors.grey.shade600, fontSize: 14),
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          ' ${book.book_published_at}',
+                          ' ${widget.book.book_published_at}',
                           style: TextStyle(
                               color: Colors.grey.shade400, fontSize: 15),
                         )
@@ -58,7 +63,7 @@ class BookItem extends StatelessWidget {
                     SizedBox(height: 3),
                     Text(
                       softWrap: true,
-                      '${book.book_desc}',
+                      '${widget.book.book_desc}',
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
