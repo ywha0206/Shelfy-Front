@@ -5,7 +5,6 @@ import 'package:shelfy_team_project/data/gvm/done_view_model.dart';
 import 'package:shelfy_team_project/data/model/book_record_doing.dart';
 import 'package:shelfy_team_project/data/model/book_record_done.dart';
 import 'package:shelfy_team_project/ui/pages/books/books_page/widget/shelf_book_item_stop.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../../../../data/gvm/stop_view_model.dart';
 import '../../../../data/gvm/wish_view_model.dart';
@@ -35,7 +34,7 @@ class BooksPage extends ConsumerWidget {
       length: 4, // 탭 개수
       child: Column(
         children: [
-          _buildTabBar(),
+          _buildTabBar(context),
           Expanded(
             child: _buildTabBarView(doingList, doingNotifier, doneList,
                 doneNotifier, wishList, wishNotifier, stopList, stopNotifier),
@@ -45,7 +44,7 @@ class BooksPage extends ConsumerWidget {
     );
   }
 
-  TabBar _buildTabBar() {
+  TabBar _buildTabBar(BuildContext context) {
     return TabBar(
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: const UnderlineTabIndicator(
@@ -56,7 +55,7 @@ class BooksPage extends ConsumerWidget {
       ),
       labelColor: const Color(0xFF4D77B2),
       unselectedLabelColor: Colors.black38,
-      labelStyle: textTheme().displayMedium,
+      labelStyle: Theme.of(context).textTheme.displayMedium,
       tabs: const [
         Tab(text: '끝맺은 책'),
         Tab(text: '여정 중인 책'),
@@ -82,7 +81,7 @@ class BooksPage extends ConsumerWidget {
           itemBuilder: (context, index) {
             final done = doneList[index];
             return ShelfBookItemDone(
-                done: done, widget: DoneWidget(done, doneNoti));
+                done: done, widget: DoneWidget(done, doneNoti, context));
           },
           itemCount: doneList.length,
         ),
@@ -92,7 +91,8 @@ class BooksPage extends ConsumerWidget {
             final doing = doingList[index];
             return ShelfBookItemDoing(
               doing: doing,
-              widget: doingWidget(doing, doingNotifier), // 여기에 창고에서 프로그래스 함수 호출
+              widget: doingWidget(
+                  doing, doingNotifier, context), // 여기에 창고에서 프로그래스 함수 호출
             );
           },
           itemCount: doingList.length,

@@ -156,16 +156,16 @@ class _HomeTabState extends State<HomeTab> with SingleTickerProviderStateMixin {
 
   TabBar _buildTabBar() {
     return TabBar(
-        indicator: UnderlineTabIndicator(
-            borderSide: BorderSide(
-              color: const Color(0xFF4D77B2),
-              width: 3.0,
-            ),
-            insets: EdgeInsets.symmetric(horizontal: 130.0)),
-        labelColor: const Color(0xFF4D77B2),
-        unselectedLabelColor: Colors.black38,
+        // indicator: UnderlineTabIndicator(
+        //     borderSide: BorderSide(
+        //       color: const Color(0xFF4D77B2),
+        //       width: 3.0,
+        //     ),
+        //     insets: EdgeInsets.symmetric(horizontal: 130.0)),
+        // labelColor: const Color(0xFF4D77B2),
+        // unselectedLabelColor: Colors.black38,
         dividerHeight: 3,
-        dividerColor: Colors.black26,
+        // dividerColor: Colors.black26,
         controller: _tabController,
         tabs: [
           Tab(text: '쌓아보기'),

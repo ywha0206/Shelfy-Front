@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../data/model/book.dart'; // 기존 모델 파일 import
 
 class NoteAddBookPage extends StatefulWidget {
@@ -49,11 +50,13 @@ class _NoteAddBookPageState extends State<NoteAddBookPage>
             Container(
               color: Colors.white, // 탭 바 배경색 지정
               child: TabBar(
-                controller: _tabController, // 컨트롤러 연결
+                controller: _tabController,
+                // 컨트롤러 연결
                 indicatorColor: const Color(0xFF4D77B2),
                 labelColor: const Color(0xFF4D77B2),
                 unselectedLabelColor: Colors.black38,
-                indicatorWeight: 2, // 탭 인디케이터 두께 설정
+                indicatorWeight: 2,
+                // 탭 인디케이터 두께 설정
                 onTap: (index) {
                   setState(() {
                     if (index == 1) {
@@ -140,9 +143,10 @@ class _NoteAddBookPageState extends State<NoteAddBookPage>
               decoration: InputDecoration(
                 hintText: '책 제목이나 작가를 검색하세요',
                 hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
-                prefixIcon:
-                    const Icon(Icons.search, color: Colors.grey), // 돋보기 아이콘
-                border: InputBorder.none, // 기본 테두리 제거
+                prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                // 돋보기 아이콘
+                border: InputBorder.none,
+                // 기본 테두리 제거
                 contentPadding: const EdgeInsets.symmetric(vertical: 10),
               ),
             ),

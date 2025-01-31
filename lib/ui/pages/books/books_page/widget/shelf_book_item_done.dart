@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelfy_team_project/data/model/book_record_done.dart';
 import 'package:shelfy_team_project/ui/pages/books/books_page/done_book_detail_page.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 class ShelfBookItemDone extends StatelessWidget {
   final Widget widget;
@@ -58,7 +56,7 @@ class ShelfBookItemDone extends StatelessWidget {
                   const SizedBox(height: 6),
                   Text(
                     done.book.book_title,
-                    style: textTheme().titleLarge,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(height: 4),
                   widget,

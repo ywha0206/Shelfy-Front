@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // inputFormatters 사용을 위해 필요
 
-import '../../../../../theme.dart';
-
 class AddBook extends StatefulWidget {
   const AddBook({super.key});
 
@@ -123,8 +121,10 @@ class _AddBookState extends State<AddBook> {
         // 입력 필드
         TextField(
           controller: controller,
-          keyboardType: keyboardType, // 입력 타입 설정
-          inputFormatters: inputFormatters, // 입력 제한 설정
+          keyboardType: keyboardType,
+          // 입력 타입 설정
+          inputFormatters: inputFormatters,
+          // 입력 제한 설정
           decoration: InputDecoration(
             border: InputBorder.none, // 입력 필드 밑줄 제거
             contentPadding: EdgeInsets.symmetric(horizontal: 10),
