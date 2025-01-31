@@ -4,17 +4,17 @@ import '../../../../../data/gvm/doing_view_model.dart';
 import '../../../../../data/gvm/done_view_model.dart';
 import '../../../../../data/model/book_record_doing.dart';
 import '../../../../../data/model/book_record_done.dart';
-import '../../../../../theme.dart';
 import '../../../../widgets/custom_star_rating.dart';
 
-Widget doingWidget(BookRecordDoing doing, DoingViewModel notifier) {
+Widget doingWidget(
+    BookRecordDoing doing, DoingViewModel notifier, BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(
         children: [
           Text('${notifier.formatSingleDateByKor(doing.startDate)}에 읽기 시작했어요',
-              style: textTheme().labelMedium),
+              style: Theme.of(context).textTheme.labelMedium),
         ],
       ),
       const SizedBox(height: 16),
@@ -44,9 +44,9 @@ Widget doingWidget(BookRecordDoing doing, DoingViewModel notifier) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('${notifier.ceilProgressPages(doing)}%',
-                style: textTheme().labelSmall),
+                style: Theme.of(context).textTheme.labelSmall),
             Text('${doing.currentPage}/${doing.book.book_page} page',
-                style: textTheme().labelSmall),
+                style: Theme.of(context).textTheme.labelSmall),
           ],
         ),
       ),
@@ -54,14 +54,17 @@ Widget doingWidget(BookRecordDoing doing, DoingViewModel notifier) {
   );
 }
 
-Widget DoneWidget(BookRecordDone book, DoneViewModel notifier) {
+Widget DoneWidget(
+    BookRecordDone book, DoneViewModel notifier, BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(
         children: [
-          Text('${book.book.book_author} · ', style: textTheme().labelMedium),
-          Text('${book.book.book_publisher}', style: textTheme().labelMedium),
+          Text('${book.book.book_author} · ',
+              style: Theme.of(context).textTheme.labelMedium),
+          Text('${book.book.book_publisher}',
+              style: Theme.of(context).textTheme.labelMedium),
         ],
       ),
       const SizedBox(height: 10),
@@ -88,7 +91,7 @@ Widget DoneWidget(BookRecordDone book, DoneViewModel notifier) {
           child: Text(
             '${notifier.formatSingleDate(book.startDate)} ~'
             ' ${notifier.formatSingleDate(book.endDate)}',
-            style: textTheme().labelMedium,
+            style: Theme.of(context).textTheme.labelMedium,
           )),
     ],
   );

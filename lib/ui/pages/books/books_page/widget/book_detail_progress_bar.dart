@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../../../../../data/model/book_record_doing.dart';
 
@@ -32,7 +31,7 @@ class _AdjustableProgressBarState extends State<AdjustableProgressBar> {
           padding: const EdgeInsets.symmetric(horizontal: 23.0),
           child: Text(
             '${widget.bookRecord.ceilProgressPages()}%',
-            style: textTheme().displayMedium,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
         ),
         // 슬라이더
@@ -47,8 +46,10 @@ class _AdjustableProgressBarState extends State<AdjustableProgressBar> {
             inactiveColor: Colors.grey[350],
             value: _currentValue,
             min: 0,
-            max: widget.bookRecord.book.book_page.toDouble(), // 동적 최대 페이지 설정
-            divisions: widget.bookRecord.book.book_page, // 동적 division 설정
+            max: widget.bookRecord.book.book_page.toDouble(),
+            // 동적 최대 페이지 설정
+            divisions: widget.bookRecord.book.book_page,
+            // 동적 division 설정
             label: "${_currentValue.toInt()}p",
             onChanged: (value) {
               setState(() {
@@ -64,7 +65,7 @@ class _AdjustableProgressBarState extends State<AdjustableProgressBar> {
             alignment: Alignment.centerRight,
             child: Text(
               '${_currentValue.toInt()} / ${widget.bookRecord.book.book_page} 페이지',
-              style: textTheme().labelMedium,
+              style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
         ),

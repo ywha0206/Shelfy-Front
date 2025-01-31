@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shelfy_team_project/theme.dart';
+import 'package:shelfy_team_project/_core/constants/theme.dart';
 import 'package:shelfy_team_project/ui/pages/note/note_page/note_add_book.dart';
 import 'package:shelfy_team_project/ui/pages/note/note_page/note_view_page.dart';
 import 'package:shelfy_team_project/ui/pages/note/note_page/note_write_page.dart';
