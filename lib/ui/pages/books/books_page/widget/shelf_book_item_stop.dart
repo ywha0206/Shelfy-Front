@@ -1,10 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelfy_team_project/data/gvm/stop_view_model.dart';
-import 'package:shelfy_team_project/data/model/book_record_done.dart';
 import 'package:shelfy_team_project/data/model/book_record_stop.dart';
-import 'package:shelfy_team_project/data/model/book_record_wish.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../../../../../components/custom_star_rating.dart';
 
@@ -51,7 +47,7 @@ class ShelfBookItemStop extends StatelessWidget {
               children: [
                 Text(
                   book.book.book_title,
-                  style: textTheme().titleLarge,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: 4),
                 customStarRating(book.rating, 1, 18),
@@ -79,7 +75,7 @@ class ShelfBookItemStop extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: Text(
                     '${noti.formatSingleDate(book.endDate)}',
-                    style: textTheme().labelMedium,
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
               ],

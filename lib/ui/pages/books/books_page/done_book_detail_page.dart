@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shelfy_team_project/components/custom_appbar.dart';
 import 'package:shelfy_team_project/components/custom_record_label.dart';
 import 'package:shelfy_team_project/components/custom_star_rating.dart';
 import 'package:shelfy_team_project/data/model/book_record_done.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 class DoneBookDetailPage extends StatefulWidget {
   final BookRecordDone book;
+
   const DoneBookDetailPage({required this.book, super.key});
 
   @override
@@ -53,12 +52,12 @@ class _DoneBookDetailPageState extends State<DoneBookDetailPage> {
             const SizedBox(height: 5),
             Text(
               '${widget.book.book.book_title}',
-              style: textTheme().headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 10),
             Text(
               '${widget.book.book.book_author} · ${widget.book.book.book_publisher}',
-              style: textTheme().labelLarge,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 10),
             customRecordLabel(1),
@@ -104,7 +103,7 @@ class _DoneBookDetailPageState extends State<DoneBookDetailPage> {
                             ),
                             child: Text(
                               '\"${widget.book.comment}\"',
-                              style: textTheme().bodyLarge,
+                              style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),
                         ],
@@ -178,7 +177,7 @@ class _DoneBookDetailPageState extends State<DoneBookDetailPage> {
                       },
                       child: Text(
                         '${formatDate(startDate)}', // 날짜 포맷 적용
-                        style: textTheme().bodyLarge,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ],
@@ -204,7 +203,7 @@ class _DoneBookDetailPageState extends State<DoneBookDetailPage> {
                       },
                       child: Text(
                         '${formatDate(endDate)}', // 날짜 포맷 적용
-                        style: textTheme().bodyLarge,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ],

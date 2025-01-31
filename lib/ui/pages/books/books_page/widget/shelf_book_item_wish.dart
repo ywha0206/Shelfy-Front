@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shelfy_team_project/components/custom_star_rating.dart';
 import 'package:shelfy_team_project/data/gvm/wish_view_model.dart';
 import 'package:shelfy_team_project/data/model/book_record_wish.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 class ShelfBookItemWish extends StatelessWidget {
   final BookRecordWish book;
@@ -50,15 +48,15 @@ class ShelfBookItemWish extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   book.book.book_title,
-                  style: textTheme().titleLarge,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: 4),
                 Row(
                   children: [
                     Text('${book.book.book_author} · ',
-                        style: textTheme().labelMedium),
+                        style: Theme.of(context).textTheme.labelMedium),
                     Text('${book.book.book_publisher}',
-                        style: textTheme().labelMedium),
+                        style: Theme.of(context).textTheme.labelMedium),
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -67,7 +65,7 @@ class ShelfBookItemWish extends StatelessWidget {
                   width: 270,
                   alignment: Alignment.bottomRight,
                   child: Text('${noti.formatSingleDate(book.startDate)}',
-                      style: textTheme().labelMedium),
+                      style: Theme.of(context).textTheme.labelMedium),
                 )
               ],
             ),

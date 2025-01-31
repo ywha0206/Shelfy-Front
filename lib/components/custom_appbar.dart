@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../ui/pages/search/search_page/widget/add_book.dart';
 
@@ -105,7 +104,7 @@ AppBar BooksAppBar(BuildContext context) {
           ),
         ),
         const SizedBox(width: 10),
-        Text('나의 책장', style: textTheme().displayLarge)
+        Text('나의 책장', style: Theme.of(context).textTheme.displayLarge)
       ],
     ),
   );
@@ -168,7 +167,7 @@ AppBar MyAppbar(BuildContext context) {
         const SizedBox(width: 6),
         Text(
           '나의 설정',
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyle(fontSize: 20),
         )
       ],
     ),

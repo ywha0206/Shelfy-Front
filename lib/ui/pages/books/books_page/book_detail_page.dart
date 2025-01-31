@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shelfy_team_project/components/custom_appbar.dart';
@@ -7,12 +6,12 @@ import 'package:shelfy_team_project/components/custom_record_label.dart';
 import 'package:shelfy_team_project/components/custom_star_rating.dart';
 import 'package:shelfy_team_project/data/model/book_record_doing.dart';
 import 'package:shelfy_team_project/ui/pages/books/books_page/widget/book_detail_progress_bar.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../../../../components/book_record_state.dart';
 
 class BookDetailPage extends StatefulWidget {
   final BookRecordDoing book;
+
   const BookDetailPage({required this.book, super.key});
 
   @override
@@ -57,12 +56,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
             const SizedBox(height: 15),
             Text(
               '${widget.book.book.book_title}',
-              style: textTheme().headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 10),
             Text(
               '${widget.book.book.book_author} · ${widget.book.book.book_publisher}',
-              style: textTheme().labelLarge,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 10),
             customRecordLabel(2),
@@ -188,7 +187,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       },
                       child: Text(
                         '${widget.book.formatSingleDate(startDate)}',
-                        style: textTheme().bodyLarge,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                   ],

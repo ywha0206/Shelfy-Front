@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shelfy_team_project/theme.dart';
 
 import '../../../../../data/model/book.dart';
 
@@ -71,12 +70,12 @@ class _BookDetailState extends State<BookDetail> {
                     SizedBox(height: 20),
                     Text(
                       widget.book.book_title,
-                      style: textTheme().headlineLarge,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     SizedBox(height: 7),
                     Text(
                       '${widget.book.book_author} · ${widget.book.book_publisher}',
-                      style: textTheme().labelLarge,
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     SizedBox(height: 20.0),
                     Padding(
@@ -96,52 +95,52 @@ class _BookDetailState extends State<BookDetail> {
                           children: [
                             Text(
                               '책 소개',
-                              style: textTheme().titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             SizedBox(height: 13),
                             Text(
                               widget.book.book_desc,
-                              style: textTheme().labelLarge,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                             SizedBox(height: 14),
                             Text(
                               '지은이',
-                              style: textTheme().titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             SizedBox(height: 13),
                             Text(
                               widget.book.book_publisher,
-                              style: textTheme().labelLarge,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                             SizedBox(height: 14),
                             Text(
                               '출판사',
-                              style: textTheme().titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             SizedBox(height: 13),
                             Text(
                               widget.book.book_publisher,
-                              style: textTheme().labelLarge,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                             SizedBox(height: 14),
                             Text(
                               'ISBN',
-                              style: textTheme().titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             SizedBox(height: 13),
                             Text(
                               widget.book.book_isbn,
-                              style: textTheme().labelLarge,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                             SizedBox(height: 14),
                             Text(
                               '페이지',
-                              style: textTheme().titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             SizedBox(height: 13),
                             Text(
                               widget.book.book_page.toString(),
-                              style: textTheme().labelLarge,
+                              style: Theme.of(context).textTheme.labelLarge,
                             ),
                           ],
                         ),

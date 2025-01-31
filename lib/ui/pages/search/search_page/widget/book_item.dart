@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shelfy_team_project/ui/pages/search/search_page/widget/book_detail.dart';
 
 import '../../../../../data/model/book.dart';
-import '../../../../../theme.dart';
 
 class BookItem extends StatefulWidget {
   final Book book;
@@ -66,19 +65,19 @@ class _BookItemState extends State<BookItem> {
                     SizedBox(height: 3),
                     Text(
                       widget.book.book_title,
-                      style: textTheme().titleLarge,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: 5),
                     Row(
                       children: [
                         Text(
                           '${widget.book.book_author}',
-                          style: textTheme().labelMedium,
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const SizedBox(width: 5),
                         Text(
                           ' ${widget.book.book_published_at}',
-                          style: textTheme().labelMedium,
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                       ],
                     ),
@@ -86,7 +85,7 @@ class _BookItemState extends State<BookItem> {
                     Text(
                       softWrap: true,
                       '${widget.book.book_desc}',
-                      style: textTheme().labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
