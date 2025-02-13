@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import '../../model/note_model.dart';
 import '../../repository/note_repository.dart';
+import 'note_list_view_model.dart';
 
 /*
      날짜 : 2025/02/05
