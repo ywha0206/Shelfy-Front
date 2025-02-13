@@ -11,7 +11,7 @@ import 'package:shelfy_team_project/ui/pages/note/note_page/widget/note_book_Inf
 
 import '../../../../data/model/book.dart';
 import '../../../../data/model/note_model.dart';
-import '../../search/search_page/widget/book_detail.dart';
+import '../../main_screen.dart';
 
 class NoteViewPage extends ConsumerStatefulWidget {
   final int noteId;
@@ -138,9 +138,12 @@ class _NoteViewPageState extends ConsumerState<NoteViewPage> {
 
     final updatedNote = Note(
       noteId: currentNote.noteId,
-      userId: currentNote.userId, // 기존 유저 ID 유지
-      title: currentNote.title, // ✅ 제목을 유지
-      content: contentController.text, // ✅ 내용만 업데이트 가능
+      userId: currentNote.userId,
+      // 기존 유저 ID 유지
+      title: currentNote.title,
+      // ✅ 제목을 유지
+      content: contentController.text,
+      // ✅ 내용만 업데이트 가능
       bookId: currentNote.bookId,
       notePin: currentNote.notePin,
       createdAt: currentNote.createdAt, // ✅ 기존 createdAt 유지
@@ -179,89 +182,109 @@ class _NoteViewPageState extends ConsumerState<NoteViewPage> {
         IconButton(
           icon: Icon(note.notePin ? Icons.bookmark : Icons.bookmark_border),
           color: Colors.grey,
-          onPressed: () {
-            print("북마크 토글: ${note.notePin}");
-          },
+          onPressed: _toggleBookmark, // ✅ 북마크 버튼 동작 연결
         ),
       ],
     );
   }
 
+  // ✅ 북마크 토글 함수
+  void _toggleBookmark() async {
+    final currentNote =
+        ref.read(noteDetailViewModelProvider(widget.noteId)).value;
+    if (currentNote == null) return;
+
+    final updatedPinStatus = !currentNote.notePin;
+
+    // try {
+    //   await updateNotePin(ref, widget.noteId, updatedPinStatus);
+    //   isUpdated = true; // ✅ 변경됨 표시
+    //   ref.invalidate(noteDetailViewModelProvider(widget.noteId)); // ✅ 즉시 UI 반영
+    // } catch (e) {
+    //   CommonSnackbar.error(context, '북마크 변경 실패: $e');
+    // }
+  }
+
+  Widget _buildBookInfoSection(
+      BuildContext context, Map<String, String>? bookData) {
+    if (bookData == null) return const SizedBox.shrink();
+
+    final book = Book(
+      book_id: int.tryParse(bookData['book_id'] ?? '0') ?? 0,
+      book_image: bookData['book_image'] ?? '',
+      book_title: bookData['book_title'] ?? '제목 없음',
+      book_author: bookData['book_author'] ?? '저자 없음',
+      book_publisher: bookData['book_publisher'] ?? '출판사 없음',
+      book_desc: bookData['book_desc'] ?? '설명 없음',
+      book_isbn: bookData['book_isbn'] ?? 'ISBN 없음',
+      book_page: int.tryParse(bookData['book_page'] ?? '0') ?? 0,
+      book_published_at: bookData['book_published_at'] ?? '출판일 정보 없음',
+    );
+
+    return Column(
+      children: [
+        Center(child: Text('기록과 함께 하는 책', style: TextStyle(fontSize: 16))),
+        const SizedBox(height: 8),
+        NoteBookInfo(
+          bookImage: book.book_image,
+          bookTitle: book.book_title,
+          bookAuthor: book.book_author,
+          isEditMode: false,
+          onDetailPressed: () {},
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBottomBar(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.delete, color: Colors.grey),
+            onPressed: () {
+              showConfirmationDialog(
+                context: context,
+                title: '노트를 삭제하시겠습니까?',
+                subtitle: '삭제한 기록은 복구할 수 없어요!',
+                confirmText: '삭제',
+                snackBarMessage: '삭제 완료!',
+                snackBarIcon: Icons.delete_forever,
+                snackBarType: 'error',
+                onConfirm: () {
+                  _deleteNote(); // ✅ 삭제 함수 연결
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   void _deleteNote() async {
     try {
-      await deleteNote(ref, widget.noteId);
+      await deleteNote(ref, widget.noteId); // ✅ API 요청 보내기
       CommonSnackbar.success(context, '노트가 삭제되었습니다!');
-      Navigator.pop(context); // ✅ 삭제 후 뒤로 가기
+
+      // ✅ 현재 화면을 닫고, 메인 화면의 "노트 탭(3번 인덱스)"으로 이동
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MainScreen(initialIndex: 3)),
+      );
     } catch (e) {
       CommonSnackbar.error(context, '삭제 실패: $e');
     }
   }
-}
 
-Widget _buildBookInfoSection(
-    BuildContext context, Map<String, String>? bookData) {
-  if (bookData == null) return const SizedBox.shrink();
-
-  final book = Book(
-    book_id: int.tryParse(bookData['book_id'] ?? '0') ?? 0,
-    book_image: bookData['book_image'] ?? '',
-    book_title: bookData['book_title'] ?? '제목 없음',
-    book_author: bookData['book_author'] ?? '저자 없음',
-    book_publisher: bookData['book_publisher'] ?? '출판사 없음',
-    book_desc: bookData['book_desc'] ?? '설명 없음',
-    book_isbn: bookData['book_isbn'] ?? 'ISBN 없음',
-    book_page: int.tryParse(bookData['book_page'] ?? '0') ?? 0,
-    book_published_at: bookData['book_published_at'] ?? '출판일 정보 없음',
-  );
-
-  return Column(
-    children: [
-      Center(child: Text('기록과 함께 하는 책', style: TextStyle(fontSize: 16))),
-      const SizedBox(height: 8),
-      NoteBookInfo(
-        bookImage: book.book_image,
-        bookTitle: book.book_title,
-        bookAuthor: book.book_author,
-        isEditMode: false,
-        onDetailPressed: () {},
-      ),
-    ],
-  );
-}
-
-Widget _buildBottomBar(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          icon: const Icon(Icons.delete, color: Colors.grey),
-          onPressed: () {
-            showConfirmationDialog(
-              context: context,
-              title: '노트를 삭제하시겠습니까?',
-              subtitle: '삭제한 기록은 복구할 수 없어요!',
-              confirmText: '삭제',
-              snackBarMessage: '삭제 완료!',
-              snackBarIcon: Icons.delete_forever,
-              snackBarType: 'error',
-              onConfirm: () {
-                print('노트 삭제됨');
-              },
-            );
-          },
-        ),
-      ],
-    ),
-  );
-}
-
-String _formatDate(String dateString) {
-  try {
-    DateTime date = DateTime.parse(dateString);
-    return DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR').format(date);
-  } catch (e) {
-    return '날짜 정보 없음';
+  String _formatDate(String dateString) {
+    try {
+      DateTime date = DateTime.parse(dateString);
+      return DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR').format(date);
+    } catch (e) {
+      return '날짜 정보 없음';
+    }
   }
 }

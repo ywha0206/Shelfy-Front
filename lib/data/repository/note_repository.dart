@@ -70,4 +70,16 @@ class NoteRepository {
       return {"success": false, "errorMessage": e.toString()};
     }
   }
+
+  // ✅ 특정 노트의 북마크 상태 업데이트
+  Future<void> updateNotePin(int noteId, bool notePin) async {
+    try {
+      await dio.patch('/api/note/$noteId/pin',
+          queryParameters: {"notePin": notePin});
+      print("✅ 북마크 업데이트 성공: noteId=$noteId, notePin=$notePin");
+    } catch (e) {
+      print("🚨 updateNotePin 실패: $e");
+      throw Exception("북마크 업데이트 실패");
+    }
+  }
 }

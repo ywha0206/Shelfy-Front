@@ -55,7 +55,7 @@ class _NoteWritePageState extends ConsumerState<NoteWritePage> {
 
     try {
       await ref.read(noteViewModelProvider.notifier).submitNote(note);
-      print('✅ 노트 저장 성공! 메인으로 이동');
+      print("🐛 노트 작성 후 유저 ID: ${getUserId(ref)}"); // ✅ 노트 작성 후 확인
 
       // ✅ 키보드 완전히 닫기
       FocusScope.of(context).unfocus();
