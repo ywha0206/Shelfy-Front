@@ -19,6 +19,7 @@ import '../../main_screen.dart';
 
 final logger = Logger();
 
+
 class NoteViewPage extends ConsumerStatefulWidget {
   final int noteId;
 
@@ -302,6 +303,7 @@ class _NoteViewPageState extends ConsumerState<NoteViewPage> {
       CommonSnackbar.error(context, '삭제 실패: $e');
     }
   }
+
 
   String _formatDate(String dateString) {
     try {
