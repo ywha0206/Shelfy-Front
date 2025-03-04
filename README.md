@@ -1,13 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=4D77B2FF&height=200&section=header&text=📖%20Shelfy%20📖&fontSize=90&fontColor=ffffff" style="width: 100%; height: 100%;"/>
-
-### [나만의 독서 기록을 관리해보세요!](http://13.124.94.213:90/)
-</div>
-
-
-<br>
-나만의 독서 기록을 관리해보세요!
-
-<br>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=4D77B2FF&height=300&section=header&text=📖%20Shelfy%20📖&desc=나만의%20독서%20기록을%20관리해보세요!&fontSize=90&fontColor=ffffff&fontAlignY=36" style="width: 100%; height: 100%;"/>
 
 ## 💷 Project
 본 프로젝트는 나만의 독서 기록을 남기고 관리할 수 있는 모바일 어플리케이션입니다.
