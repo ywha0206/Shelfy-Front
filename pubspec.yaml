@@ -47,6 +47,11 @@ dependencies:
   # 예: 달력 앱에서 '2025년 1월 13일' 또는 'January 13, 2025'와 같은 형식 지원.
   intl: ^0.18.1
   logger: ^2.5.0
+  dio: ^5.2.0 # 서버와 통신하기 위해 필요한 라이브러리 입니다.
+  flutter_riverpod: ^2.3.6 # 상태관리 Riverpod 라이브러리 입니다.
+  flutter_secure_storage: ^8.0.0 # 어플리케이션 Secure Storage를 쉽게 사용할 수 있도록 도와주는 라이브러리입니다.
+  pull_to_refresh: ^2.0.0
+  fl_chart: ^0.63.0
 
 dev_dependencies:
   flutter_test:
@@ -72,7 +77,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/images/
+    - assets/fonts/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -86,10 +93,46 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Pretendard-Black
+      fonts:
+        - asset: assets/fonts/Pretendard-Black.otf
+    - family: Pretendard-Bold
+      fonts:
+        - asset: assets/fonts/Pretendard-Bold.otf
+    - family: Pretendard-ExtraBold
+      fonts:
+        - asset: assets/fonts/Pretendard-ExtraBold.otf
+    - family: Pretendard-ExtraLight
+      fonts:
+        - asset: assets/fonts/Pretendard-ExtraLight.otf
+    - family: Pretendard-Light
+      fonts:
+        - asset: assets/fonts/Pretendard-Light.otf
+    - family: Pretendard-Medium
+      fonts:
+        - asset: assets/fonts/Pretendard-Medium.otf
+    - family: Pretendard-Regular
+      fonts:
+        - asset: assets/fonts/Pretendard-Regular.otf
+    - family: Pretendard-SemiBold
+      fonts:
+        - asset: assets/fonts/Pretendard-SemiBold.otf
+    - family: Pretendard-Thin
+      fonts:
+        - asset: assets/fonts/Pretendard-Thin.otf
+    - family: JUA
+      fonts:
+        - asset: assets/fonts/BMJUA_ttf.ttf
+    - family: KCCB
+      fonts:
+        - asset: assets/fonts/KCCBangJeonghwanTTF.ttf
+    - family: Book-Bold
+      fonts:
+        - asset: assets/fonts/BookkMyungjo_Bold.ttf
+    - family: Book-Light
+      fonts:
+        - asset: assets/fonts/BookkMyungjo_Light.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
